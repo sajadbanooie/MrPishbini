@@ -8,6 +8,7 @@ from telegram import Update, Message
 from telegram.bot import Bot
 # Create your views here.
 
+
 @csrf_exempt
 def webhook(req, token):
     bot = Bot(token=token)
