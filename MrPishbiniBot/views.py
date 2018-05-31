@@ -1,11 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from telegram import Update, Message
+from django.views.decorators.csrf import csrf_exempt
 
+from telegram import Update, Message
 from telegram.bot import Bot
 # Create your views here.
 
-
+@csrf_exempt
 def webhook(req, token):
     bot = Bot(token=token)
     update = Update.de_json(req.body, bot)
