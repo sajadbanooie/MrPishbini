@@ -1,17 +1,21 @@
 import json
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from telegram import Update, Message
 from telegram.bot import Bot
+
+from MrPishbiniBot.bot import MrPishbiniBot
 # Create your views here.
 
 
 @csrf_exempt
-def webhook(req, token):
+def webhook(req: HttpRequest, token: str):
     bot = Bot(token=token)
     update = Update.de_json(json.loads(req.body), bot)
-    bot.send_message(update.message.chat_id, "hello")
+
+    MrPishbiniBot.update(bot, update)
+
     return HttpResponse('')
