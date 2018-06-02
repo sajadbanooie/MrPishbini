@@ -5,9 +5,9 @@ from telegram.bot import Bot
 
 WELCOME_MSG = 'سلام خوش اومدین'
 START_COMMAND = '/start'
-RULES_COMMAND = ''
-MATCH_LIST_COMMAND = ''
-PISHBINI_COMMAND = ''
+RULES_COMMAND = 'قوانین'
+MATCH_LIST_COMMAND = 'لیست بازی ها'
+PISHBINI_COMMAND = 'ثبت پیشبینی'
 
 
 class MrPishbiniBot:
