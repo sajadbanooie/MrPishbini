@@ -8,7 +8,6 @@ START_COMMAND = '/start'
 class MrPishbiniBot:
     @staticmethod
     def update(bot: Bot, update: Update):
-        Message.text
         if update.message:
             print(update.message)
             if update.message.text == START_COMMAND:
