@@ -51,9 +51,10 @@ class MrPishbiniBot:
             elif update.message.text == CANCEL_CMD:
                 user_temp_data[update.message.from_user.id] = {'status': STATUS_IDLE, 'temp_data': None}
             elif update.message.text == PISHBINI_CMD:
-                if datetime.datetime.strptime(BEGIN_TIME, "") <= datetime.datetime.now(get_current_timezone()):
-                    MrPishbiniBot.pishbini(bot, update)
-                    return
+                # TODO
+                # if datetime.datetime.strptime(BEGIN_TIME, "") <= datetime.datetime.now(get_current_timezone()):
+                #     MrPishbiniBot.pishbini(bot, update)
+                #     return
                 bot.send_message(update.message.chat_id, "از بین اینها انخاب کن"
                                  , reply_markup=ReplyKeyboardMarkup(
                         [[KeyboardButton(MATCH_PISHBINI_CMD), KeyboardButton(PRE_PISHBINI_CMD)]]))
@@ -95,6 +96,9 @@ class MrPishbiniBot:
                    + m.teams.all()[1].name + m.teams.all()[1].flag \
                    + '    ' + str(m.time) + '\n'
             i += 1
+
+        if msg == '':
+            msg = 'هیچی'
 
         bot.send_message(update.message.chat_id, msg)
 
@@ -228,11 +232,12 @@ class MrPishbiniBot:
         user = User.objects.get(id=update.message.from_user.id)
 
         if user_temp_data[tg_user.id]['status'] == STATUS_PRE_PISHBINI:
-            if datetime.datetime.strptime(BEGIN_TIME, "") <= datetime.datetime.now(get_current_timezone()):
-                bot.send_message(update.message.chat_id, "مهلتت تموم شده.")
-                user_temp_data[tg_user.id]['status'] = STATUS_IDLE
-                user_temp_data[tg_user.id]['temp_data'] = None
-                return
+            # TODO
+            # if datetime.datetime.strptime(BEGIN_TIME, "") <= datetime.datetime.now(get_current_timezone()):
+            #     bot.send_message(update.message.chat_id, "مهلتت تموم شده.")
+            #     user_temp_data[tg_user.id]['status'] = STATUS_IDLE
+            #     user_temp_data[tg_user.id]['temp_data'] = None
+            #     return
             user.pre_pishbini = update.message.text
             user.save()
             bot.send_message(update.message.chat_id, "پیشبینی با موفقیت ثبت شد.")
