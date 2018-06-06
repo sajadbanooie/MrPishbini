@@ -42,6 +42,7 @@ class MrPishbiniBot:
     def update(bot: Bot, update: Update):
         if update.message:
             print(update.message)
+            tg_user: TelegramUser = update.message.from_user
             if update.message.text == START_CMD:
                 MrPishbiniBot.start(bot, update)
             elif update.message.text == RULES_CMD:
@@ -66,6 +67,16 @@ class MrPishbiniBot:
                 MrPishbiniBot.scores(bot, update)
             elif update.message.text == MY_PISHBINIS_CMD:
                 MrPishbiniBot.my_pishbinis(bot, update)
+            elif user_temp_data[tg_user.id]['status'] == STATUS_PISHBINI_T1:
+                MrPishbiniBot.pishbini_t1(bot, update)
+            elif user_temp_data[tg_user.id]['status'] == STATUS_PISHBINI_T2:
+                MrPishbiniBot.pishbini_t2(bot, update)
+            elif user_temp_data[tg_user.id]['status'] == STATUS_PISHBINI_PT1:
+                MrPishbiniBot.pishbini_pt1(bot, update)
+            elif user_temp_data[tg_user.id]['status'] == STATUS_PISHBINI_PT2:
+                MrPishbiniBot.pishbini_pt2(bot, update)
+            elif user_temp_data[tg_user.id]['status'] == STATUS_PISHBINI_FINAL:
+                MrPishbiniBot.pishbini_final(bot, update)
 
     @staticmethod
     def start(bot: Bot, update: Update):
