@@ -94,7 +94,7 @@ class MrPishbiniBot:
         for m in Match.objects.all():
             msg += '(' + str(i) + ') ' + m.teams.all()[0].flag + m.teams.all()[0].name + ' - ' \
                    + m.teams.all()[1].name + m.teams.all()[1].flag \
-                   + '    ' + str(m.time) + '\n'
+                   + '    '  + '\n'
             i += 1
 
         if msg == '':
