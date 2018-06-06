@@ -94,7 +94,7 @@ class MrPishbiniBot:
         for m in Match.objects.all():
             msg += '(' + str(i) + ') ' + m.teams.all()[0].flag + m.teams.all()[0].name + ' - ' \
                    + m.teams.all()[1].name + m.teams.all()[1].flag \
-                   + '    '  + '\n'
+                   + '    ' + str(m.time) + '\n'
             i += 1
 
         if msg == '':
@@ -141,10 +141,12 @@ class MrPishbiniBot:
 
         bot.send_message(update.message.chat_id, msg)
 
-        keyboard = [[]]
+        keyboard = []
 
-        for j in range(i):
-            keyboard[j // 3][j % 3] = KeyboardButton(str(j + 1))
+        for j in range(i//3):
+            keyboard.append([])
+            for k in range(i % 3):
+                keyboard[j].append(KeyboardButton(str(j*3 + k + 1)))
 
         keyboard[i // 3][i % 3] = KeyboardButton(CANCEL_CMD)
 
