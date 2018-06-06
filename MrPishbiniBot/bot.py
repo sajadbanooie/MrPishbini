@@ -148,7 +148,7 @@ class MrPishbiniBot:
             for k in range(i % 3):
                 keyboard[j].append(KeyboardButton(str(j*3 + k + 1)))
 
-        keyboard[i // 3][i % 3] = KeyboardButton(CANCEL_CMD)
+        keyboard[i // 3].append(KeyboardButton(CANCEL_CMD))
 
         bot.send_message(update.message.chat_id, "", reply_markup=ReplyKeyboardMarkup(keyboard))
         user_temp_data[tg_user.id]['status'] = STATUS_PISHBINI_T1
