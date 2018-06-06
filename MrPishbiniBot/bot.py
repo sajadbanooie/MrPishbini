@@ -150,7 +150,7 @@ class MrPishbiniBot:
 
         keyboard[i // 3 - 1].append(KeyboardButton(CANCEL_CMD))
 
-        bot.send_message(update.message.chat_id, "", reply_markup=ReplyKeyboardMarkup(keyboard))
+        bot.send_message(update.message.chat_id, "کدوم بازی رو می خوای پیشبینی کنی؟", reply_markup=ReplyKeyboardMarkup(keyboard))
         user_temp_data[tg_user.id]['status'] = STATUS_PISHBINI_T1
 
     @staticmethod
