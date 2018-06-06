@@ -79,7 +79,7 @@ class MrPishbiniBot:
 
         user_temp_data[update.message.from_user.id] = {'status': STATUS_IDLE, 'temp_data': None}
 
-        u = User.objects.get_or_create(first_name=update.message.from_user.first_name, id=update.message.from_user.id)
+        u, created = User.objects.get_or_create(first_name=update.message.from_user.first_name, id=update.message.from_user.id)
         if update.message.from_user.last_name:
             u.last_name = update.message.from_user.last_name
         if update.message.from_user.username:
